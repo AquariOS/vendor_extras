@@ -40,26 +40,26 @@ except:
     device = product
 
 if not depsonly:
-    print "Device %s not found. Attempting to retrieve device repository from DU Github (http://github.com/DirtyUnicorns)." % device
+    print "Device %s not found. Attempting to retrieve device repository from AquariOS Devices Github (http://github.com/Aqua-devices)." % device
 
 repositories = []
 
 # repo check
 branch_check = r'external/bson'
 if os.path.exists(branch_check):
-    du_branch = "p9x-caf";
+    aqua_branch = "x-ng";
 else:
-    du_branch = "p9x";
+    aqua_branch = "x";
 
 # gapps
 repo_check = r'vendor/pixelgapps'
 gapps_location = 'vendor/pixelgapps'
-gapps_git = 'https://gitlab.com/spaceman860/android_vendor_pixelgapps'
-gapps_branch = 'p9x'
+gapps_git = 'https://gitlab.com/AquariOS/vendor_pixelgapps'
+gapps_branch = 'x'
 
 page = 1
 while not depsonly:
-    request = Request("https://api.github.com/users/DirtyUnicorns/repos?page=%d" % page)
+    request = Request("https://api.github.com/users/Aqua-devices/repos?page=%d" % page)
     api_file = os.getenv("HOME") + '/api_token'
     if (os.path.isfile(api_file)):
         infile = open(api_file, 'r')
@@ -105,7 +105,7 @@ def indent(elem, level=0):
 
 def get_from_manifest(devicename):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/du_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/aqua_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -129,7 +129,7 @@ def get_from_manifest(devicename):
 
 def is_in_manifest(projectname, branch):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/du_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/aqua_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -142,7 +142,7 @@ def is_in_manifest(projectname, branch):
 
 def add_to_manifest_dependencies(repositories):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/du_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/aqua_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -156,7 +156,7 @@ def add_to_manifest_dependencies(repositories):
                 print 'Updating dependency %s' % (repo_name)
                 existing_project.set('name', repository['repository'])
             if existing_project.attrib['revision'] == repository['branch']:
-                print 'DirtyUnicorns/%s already exists' % (repo_name)
+                print 'Aqua-devices/%s already exists' % (repo_name)
             else:
                 print 'updating branch for %s to %s' % (repo_name, repository['branch'])
                 existing_project.set('revision', repository['branch'])
@@ -164,7 +164,7 @@ def add_to_manifest_dependencies(repositories):
 
         print 'Adding dependency: %s -> %s' % (repo_name, repo_target)
         project = ElementTree.Element("project", attrib = { "path": repo_target,
-            "remote": "github", "name": repo_name, "revision": du_branch })
+            "remote": "github", "name": repo_name, "revision": aqua_branch })
 
         if 'branch' in repository:
             project.set('revision',repository['branch'])
@@ -175,13 +175,13 @@ def add_to_manifest_dependencies(repositories):
     raw_xml = ElementTree.tostring(lm)
     raw_xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + raw_xml
 
-    f = open('.repo/local_manifests/du_manifest.xml', 'w')
+    f = open('.repo/local_manifests/aqua_manifest.xml', 'w')
     f.write(raw_xml)
     f.close()
 
 def add_to_manifest(repositories):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/du_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/aqua_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -192,15 +192,15 @@ def add_to_manifest(repositories):
         existing_project = exists_in_tree_device(lm, repo_name)
         if existing_project != None:
             if existing_project.attrib['revision'] == repository['branch']:
-                print 'DirtyUnicorns/%s already exists' % (repo_name)
+                print 'Aqua-devices/%s already exists' % (repo_name)
             else:
-                print 'updating branch for DirtyUnicorns/%s to %s' % (repo_name, repository['branch'])
+                print 'updating branch for Aqua-devices/%s to %s' % (repo_name, repository['branch'])
                 existing_project.set('revision', repository['branch'])
             continue
 
-        print 'Adding dependency: DirtyUnicorns/%s -> %s' % (repo_name, repo_target)
+        print 'Adding dependency: Aqua-devices/%s -> %s' % (repo_name, repo_target)
         project = ElementTree.Element("project", attrib = { "path": repo_target,
-            "remote": "github", "name": "DirtyUnicorns/%s" % repo_name, "revision": du_branch })
+            "remote": "github", "name": "Aqua-devices/%s" % repo_name, "revision": aqua_branch })
 
         if 'branch' in repository:
             project.set('revision', repository['branch'])
@@ -211,7 +211,7 @@ def add_to_manifest(repositories):
     raw_xml = ElementTree.tostring(lm)
     raw_xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + raw_xml
 
-    f = open('.repo/local_manifests/du_manifest.xml', 'w')
+    f = open('.repo/local_manifests/aqua_manifest.xml', 'w')
     f.write(raw_xml)
     f.close()
 
@@ -220,7 +220,7 @@ def git(*args):
 
 def add_gitlab_to_manifest(repositories):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/du_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/aqua_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -237,7 +237,7 @@ def add_gitlab_to_manifest(repositories):
             continue
 
         project = ElementTree.Element("project", attrib = { "path": repo_target,
-            "remote": "gitlab", "name": repo_name, "revision": du_branch })
+            "remote": "gitlab", "name": repo_name, "revision": aqua_branch })
 
         if 'branch' in repository:
             project.set('revision', repository['branch'])
@@ -248,12 +248,12 @@ def add_gitlab_to_manifest(repositories):
     raw_xml = ElementTree.tostring(lm)
     raw_xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + raw_xml
 
-    f = open('.repo/local_manifests/du_manifest.xml', 'w')
+    f = open('.repo/local_manifests/aqua_manifest.xml', 'w')
     f.write(raw_xml)
     f.close()
 
 def fetch_pixel_gapps(repo_path):
-    gapps_path = repo_path + '/du.mk'
+    gapps_path = repo_path + '/aquarios.mk'
     with open(gapps_path, 'r') as f:
         for line in f.readlines():
             if 'pixelgapps' in line:
@@ -263,7 +263,7 @@ def fetch_pixel_gapps(repo_path):
 
 def fetch_dependencies(repo_path):
     print 'Looking for dependencies'
-    dependencies_path = repo_path + '/du.dependencies'
+    dependencies_path = repo_path + '/aqua.dependencies'
     syncable_repos = []
 
     if os.path.exists(dependencies_path):
@@ -308,7 +308,7 @@ else:
 
             repo_path = "device/%s/%s" % (manufacturer, device)
 
-            add_to_manifest([{'repository':repo_name,'target_path':repo_path,'branch':du_branch}])
+            add_to_manifest([{'repository':repo_name,'target_path':repo_path,'branch':aqua_branch}])
 
             print "Syncing repository to retrieve project."
             os.system('repo sync %s' % repo_path)
@@ -318,4 +318,4 @@ else:
             print "Done"
             sys.exit()
 
-print "Repository for %s not found in the DU Github repository list. If this is in error, you may need to manually add it to .repo/local_manifests/du_manifest.xml" % device
+print "Repository for %s not found in the AquariOS Devices Github repository list. If this is in error, you may need to manually add it to .repo/local_manifests/aqua_manifest.xml" % device

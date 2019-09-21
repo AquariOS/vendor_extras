@@ -38,29 +38,55 @@ bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) $(MD5SUM) $(INTERNAL_BACON_TARGET) | sed "s|$(PRODUCT_OUT)/||" > $(INTERNAL_BACON_TARGET).md5sum
 	#@echo "Package Complete: $(INTERNAL_BACON_TARGET)" >&2
 
-	@echo  ${CL_RED}""${CL_RED}
-	@echo -e ${CL_RED}".......................########..####.########..########.##....##......................"${CL_RED}
-	@echo -e ${CL_RED}".......................##.....##..##..##.....##....##.....##..##......................."${CL_RED}
-	@echo -e ${CL_RED}".......................##.....##..##..##.....##....##......####........................"${CL_RED}
-	@echo -e ${CL_RED}".......................##.....##..##..########.....##.......##........................."${CL_RED}
-	@echo -e ${CL_RED}".......................##.....##..##..##...##......##.......##........................."${CL_RED}
-	@echo -e ${CL_RED}".......................##.....##..##..##....##.....##.......##........................."${CL_RED}
-	@echo -e ${CL_RED}".......................########..####.##.....##....##.......##........................."${CL_RED}
-	@echo -e ${CL_RED}"......................................................................................."${CL_RED}
-	@echo -e ${CL_RED}"......................................................................................."${CL_RED}
-	@echo -e ${CL_RED}".........##.....##.##....##.####..######...#######..########..##....##..######........."${CL_RED}
-	@echo -e ${CL_RED}".........##.....##.###...##..##..##....##.##.....##.##.....##.###...##.##....##........"${CL_RED}
-	@echo -e ${CL_RED}".........##.....##.####..##..##..##.......##.....##.##.....##.####..##.##.............."${CL_RED}
-	@echo -e ${CL_RED}".........##.....##.##.##.##..##..##.......##.....##.########..##.##.##..######........."${CL_RED}
-	@echo -e ${CL_RED}".........##.....##.##..####..##..##.......##.....##.##...##...##..####.......##........"${CL_RED}
-	@echo -e ${CL_RED}".........##.....##.##...###..##..##....##.##.....##.##....##..##...###.##....##........"${CL_RED}
-	@echo -e ${CL_RED}"..........#######..##....##.####..######...#######..##.....##.##....##..######........."${CL_RED}
-	@echo -e ${CL_RST}""${CL_RST}
-	@echo -e ${CL_RST}""${CL_RST}
-	@echo -e ${CL_RST}"                    Build completed! Now flash that shit and ENJOY!                    "${CL_RST}
-	@echo -e ${CL_RST}""${CL_RST}
-	@echo -e ${CL_RED}"======================================================================================="${CL_RED}
-	@echo -e ${CL_RST}""Package Complete: "$(INTERNAL_BACON_TARGET)"${CL_RST}
-	@echo -e ${CL_RED}"======================================================================================="${CL_RED}
-	@echo -e ${CL_RST}"Be yourself. Unless you can be a unicorn, in that case, you should always be a unicorn."${CL_RST}
+	@echo -e ""
+	@echo -e ""
+	@echo -e ""
+	@echo -e ${5fffff}"	                                   oo                          "${CL_RST}
+	@echo -e ${5fffff}"	                                oooo                           "${CL_RST}
+	@echo -e ${5fffff}"	                          oooooooooooo                         "${CL_RST}
+	@echo -e ${5fffff}"	                          oooooooooooooooooo                   "${CL_RST}
+	@echo -e ${5fffff}"	                      oooooooooooooooooooooo                   "${CL_RST}
+	@echo -e ${5fffff}"	                      ooooooooooooooooooooooo                  "${CL_RST}
+	@echo -e ${5fffd7}"	                     oooooooooooooooooooooooo                  "${CL_RST}
+	@echo -e ${5fffd7}"	                   ooooooooooooooooooooooooooo                 "${CL_RST}
+	@echo -e ${5fffd7}"	                      ooooooooooooooooooooooooo                "${CL_RST}
+	@echo -e ${5fffd7}"	                    ooooooooooooooooooooooooooooo              "${CL_RST}
+	@echo -e ${00d7d7}"	                   oooooooooooooooooooooooooooooooo            "${CL_RST}
+	@echo -e ${00d7d7}"	                 oooooooooooooooooo ooooooooooooooooo          "${CL_RST}
+	@echo -e ${00d7d7}"	                 ooooooooooooooooooo  ooo  oooooooooooo        "${CL_RST}
+	@echo -e ${00d7d7}"	                 oooooooooooooooooooooo          ooooo         "${CL_RST}
+	@echo -e ${00d7d7}"	                 ooooooooooooooooooooooooo                     "${CL_RST}
+	@echo -e ${00d7d7}"	                  ooooooooooooooooooooooooooo                  "${CL_RST}
+	@echo -e ${00d7d7}"	                   oooooooooooooooooooooooooooo                "${CL_RST}
+	@echo -e ${00d7d7}"	                    oooooooooooooooooooooooooooo               "${CL_RST}
+	@echo -e ${5fd7d7}"	                   o  ooooooooooooooooooooooooooo              "${CL_RST}
+	@echo -e ${5fd7d7}"	         oo      oooo   oooooooooooooooooooooooooo             "${CL_RST}
+	@echo -e ${5fd7d7}"	          ooooooooooo   oooooooooooooooooooooooooo             "${CL_RST}
+	@echo -e ${5fd7d7}"	           ooooooooooooooooooooooooooooooooooooooo             "${CL_RST}
+	@echo -e ${5fd7d7}"	           oooooooooooooooooooooooooooooooooooooo              "${CL_RST}
+	@echo -e ${5fafaf}"	       ooooooooooooooooooooooooooooooooooooooooo               "${CL_RST}
+	@echo -e ${5fafaf}"	           oooooooooooooooooooooooooooooooooooo                "${CL_RST}
+	@echo -e ${5fafaf}"	          ooooooooooooooooooooooooooooooooooo                  "${CL_RST}
+	@echo -e ${5fafaf}"	       ooooooooooooooooooooooooooooooooooo                     "${CL_RST}
+	@echo -e ${5f87af}"	            ooooooooooooooooooooooooooo                        "${CL_RST}
+	@echo -e ${5f87af}"	          oooooooooooooooooooooooooo                           "${CL_RST}
+	@echo -e ${5f87af}"	                 ooooooooooooooo                               "${CL_RST}
+	@echo -e ${5f87af}"	                ooooooooooooooo                                "${CL_RST}
+	@echo -e ${5f87af}"	                oooooooooooooo                                 "${CL_RST}
+	@echo -e ${0087af}"	                oooooooooooooo         ooooooooo               "${CL_RST}
+	@echo -e ${0087af}"	                oooooooooooooo       ooooooooooooo             "${CL_RST}
+	@echo -e ${0087af}"	                ooooooooooooooo     ooooo  ooooooo             "${CL_RST}
+	@echo -e ${0087af}"	                 oooooooooooooo     ooo      oooooo            "${CL_RST}
+	@echo -e ${0087af}"	                  oooooooooooooo    oo       oooooo            "${CL_RST}
+	@echo -e ${0087af}"	                    ooooooooooooooo  o     ooooooo             "${CL_RST}
+	@echo -e ${0087af}"	                     oooooooooooooooooooooooooooo              "${CL_RST}
+	@echo -e ${005f87}"	                        oooooooooooooooooooooooo               "${CL_RST}
+	@echo -e ${005f87}"	                           oooooooooooooooooooo                "${CL_RST}
+	@echo -e ${005f87}"	                                ooooooooooo                    "${CL_RST}
+	@echo -e " "
+	@echo -e " "${CL_RST}
+	@echo -e ${ff875f}"			  Welcome to the age of AquariOS"${CL_RST}
+	@echo -e " "
+	@echo -e ${CL_BWT}"Package Complete: $(AQUARIOS_TARGET_PACKAGE)"${CL_RST}
+	@echo -e "SIZE:"${CL_CYN}" `ls -la --si $(AQUARIOS_TARGET_PACKAGE) | cut -d ' ' -f 5`"${CL_RST}
 

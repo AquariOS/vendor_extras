@@ -25,10 +25,10 @@ function mka() {
 function breakfast()
 {
     target=$1
-    DU_DEVICES_ONLY="true"
+    AQUA_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
-    for f in `/bin/ls vendor/du/vendorsetup.sh 2> /dev/null`
+    for f in `/bin/ls vendor/aquarios/vendorsetup.sh 2> /dev/null`
         do
             echo "including $f"
             . $f
@@ -45,8 +45,8 @@ function breakfast()
             # A buildtype was specified, assume a full device name
             lunch $target
         else
-            # This is probably just the DU model name
-            lunch du_$target-userdebug
+            # This is probably just the Aqua model name
+            lunch aqua_$target-userdebug
         fi
     fi
     return $?
