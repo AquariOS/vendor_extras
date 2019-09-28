@@ -17,7 +17,6 @@
 # PFX: Prefix "target C++:" in yellow
 # INS: Module "Install:" output color (cyan for ics)
 
-ifneq ($(BUILD_WITH_COLORS),0)
   CL_PFX="\033[33m"
   CL_INS="\033[36m"
   CL_RED="\033[31m"
@@ -43,7 +42,6 @@ ifneq ($(BUILD_WITH_COLORS),0)
   CL_BCY="\033[1;36m"
 #white
   CL_BWT="\033[1;37m"
-endif
 
 # High Intensty
 IBlack="\033[0;90m"
@@ -71,7 +69,7 @@ URed="\033[4;31m"
 UGreen="\033[4;32m"
 UYellow="\033[4;33m"
 UBlue="\033[4;34m"
-UPurple=033[4;35m"
+UPurple="\033[4;35m"
 UCyan="\033[4;36m"
 UWhite="\033[4;37m"
 
@@ -91,3 +89,4 @@ ff875f="\033[38;5;208m"
 5fffff="\033[38;5;87m"
 87ffd7="\033[38;5;122m"
 00d7ff="\033[38;5;45m"
+
