@@ -60,8 +60,8 @@ gapps_branch = 'x'
 # vendor_images
 repo_check = r'vendor/images'
 images_location = 'vendor/images'
-images_git = 'https://gitlab.com/AquariOS/vendor_images'
-images_branch = 'x'
+images_git = 'https://gitlab.com/DirtyUnicorns/android_vendor_images'
+images_branch = 'q10x'
 
 page = 1
 while not depsonly:
