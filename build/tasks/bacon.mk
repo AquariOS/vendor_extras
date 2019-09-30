@@ -32,9 +32,9 @@ endif
 
 INTERNAL_BACON_TARGET := $(PRODUCT_OUT)/$(INTERNAL_BACON_NAME).zip
 
-.PHONY: bacon
+.PHONY: bacon aquarios otapackage
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(INTERNAL_BACON_TARGET)
+	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(INTERNAL_BACON_TARGET)
 	$(hide) $(MD5SUM) $(INTERNAL_BACON_TARGET) | sed "s|$(PRODUCT_OUT)/||" > $(INTERNAL_BACON_TARGET).md5sum
 	#@echo "Package Complete: $(INTERNAL_BACON_TARGET)" >&2
 
@@ -90,3 +90,4 @@ bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo -e ${CL_BWT}"Package Complete: $(AQUARIOS_TARGET_PACKAGE)"${CL_RST}
 	@echo -e "SIZE:"${CL_CYN}" `ls -la --si $(AQUARIOS_TARGET_PACKAGE) | cut -d ' ' -f 5`"${CL_RST}
 
+bacon: aquarios
