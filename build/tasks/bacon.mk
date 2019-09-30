@@ -20,17 +20,9 @@
 #
 # PFX: Prefix "target C++:" in yellow
 # INS: Module "Install:" output color (cyan for ics)
-ifneq ($(BUILD_WITH_COLORS),0)
-    include $(TOP_DIR)vendor/extras/build/core/colors.mk
-endif
+include $(TOP_DIR)vendor/extras/build/core/colors.mk
 
-ifeq ($(TARGET_BACON_NAME),)
-    INTERNAL_BACON_NAME := $(TARGET_PRODUCT)-$(PLATFORM_VERSION)-$(shell date -u +%Y%m%d)
-else
-    INTERNAL_BACON_NAME := $(TARGET_BACON_NAME)
-endif
-
-INTERNAL_BACON_TARGET := $(PRODUCT_OUT)/$(INTERNAL_BACON_NAME).zip
+INTERNAL_BACON_TARGET := $(PRODUCT_OUT)/$(TARGET_PRODUCT)-$(AQUARIOS_VERSION).zip
 
 .PHONY: bacon aquarios otapackage
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
@@ -84,7 +76,7 @@ bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo -e ${005f87}"	                           oooooooooooooooooooo                "${CL_RST}
 	@echo -e ${005f87}"	                                ooooooooooo                    "${CL_RST}
 	@echo -e " "
-	@echo -e " "${CL_RST}
+	@echo -e " "
 	@echo -e ${ff875f}"			  Welcome to the age of AquariOS"${CL_RST}
 	@echo -e " "
 	@echo -e ${CL_BWT}"Package Complete: $(AQUARIOS_TARGET_PACKAGE)"${CL_RST}

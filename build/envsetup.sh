@@ -140,21 +140,11 @@ function mk_timer()
     local hours=$(($tdiff / 3600 ))
     local mins=$((($tdiff % 3600) / 60))
     local secs=$(($tdiff % 60))
-    local ncolors=$(tput colors 2>/dev/null)
-    if [ -n "$ncolors" ] && [ $ncolors -ge 8 ]; then
-        color_failed=$'\E'"[0;31m"
-        color_success=$'\E'"[0;32m"
-        color_reset=$'\E'"[00m"
-    else
-        color_failed=""
-        color_success=""
-        color_reset=""
-    fi
     echo
     if [ $ret -eq 0 ] ; then
-        echo -n "${color_success}#### build completed successfully "
+        echo -n "${BIGreen}#### build completed successfully ${CL_RST}"
     else
-        echo -n "${color_failed}#### failed to build some targets "
+        echo -n "${BIRed}#### failed to build some targets ${CL_RST}"
     fi
     if [ $hours -gt 0 ] ; then
         printf "(%02g:%02g:%02g (hh:mm:ss))" $hours $mins $secs
@@ -163,7 +153,7 @@ function mk_timer()
     elif [ $secs -gt 0 ] ; then
         printf "(%s seconds)" $secs
     fi
-    echo " ####${color_reset}"
+    echo "${CL_BWT}####${CL_RST}"
     echo
     return $ret
 }
