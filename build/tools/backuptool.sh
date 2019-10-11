@@ -4,7 +4,7 @@
 #
 
 export C=/tmp/backupdir
-export S=/system
+export S=$2
 
 # Mount /system if it is not already mounted
 mount_system() {
@@ -23,13 +23,13 @@ fi
 # Preserve /system/addon.d in /tmp/addon.d
 preserve_addon_d() {
   mkdir -p /tmp/addon.d/
-  cp -a /system/addon.d/* /tmp/addon.d/
+  cp -a $2/addon.d/* /tmp/addon.d/
   chmod 755 /tmp/addon.d/*.sh
 }
 
 # Restore /system/addon.d in /tmp/addon.d
 restore_addon_d() {
-  cp -a /tmp/addon.d/* /system/addon.d/
+  cp -a /tmp/addon.d/* $2/addon.d/
   rm -rf /tmp/addon.d/
 }
 
