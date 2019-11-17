@@ -44,12 +44,8 @@ if not depsonly:
 
 repositories = []
 
-# repo check
-branch_check = r'external/bson'
-if os.path.exists(branch_check):
-    aqua_branch = "x-ng";
-else:
-    aqua_branch = "x";
+# define branch
+aqua_branch = "x";
 
 # gapps
 repo_check = r'vendor/pixelgapps'
