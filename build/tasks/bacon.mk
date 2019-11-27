@@ -22,13 +22,12 @@
 # INS: Module "Install:" output color (cyan for ics)
 include $(TOP_DIR)vendor/extras/build/core/colors.mk
 
-INTERNAL_BACON_TARGET := $(PRODUCT_OUT)/$(TARGET_PRODUCT)-$(AQUARIOS_VERSION).zip
+AQUARIOS_TARGET_PACKAGE := $(PRODUCT_OUT)/$(TARGET_PRODUCT)-$(AQUARIOS_VERSION).zip
 
 .PHONY: bacon aquarios otapackage
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(INTERNAL_BACON_TARGET)
-	$(hide) $(MD5SUM) $(INTERNAL_BACON_TARGET) | sed "s|$(PRODUCT_OUT)/||" > $(INTERNAL_BACON_TARGET).md5sum
-	#@echo "Package Complete: $(INTERNAL_BACON_TARGET)" >&2
+	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(AQUARIOS_TARGET_PACKAGE)
+	$(hide) $(MD5SUM) $(AQUARIOS_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(AQUARIOS_TARGET_PACKAGE).md5sum
 
 	@echo -e ""
 	@echo -e ""
@@ -77,9 +76,9 @@ bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo -e ${005f87}"	                                ooooooooooo                    "${CL_RST}
 	@echo -e " "
 	@echo -e " "
-	@echo -e ${ff875f}"			  Welcome to the age of AquariOS"${CL_RST}
+	@echo -e ${BIYellow}"			  Welcome to the age of AquariOS"${CL_RST}
 	@echo -e " "
-	@echo -e ${CL_BWT}"Package Complete: $(AQUARIOS_TARGET_PACKAGE)"${CL_RST}
-	@echo -e "SIZE:"${CL_CYN}" `ls -la --si $(AQUARIOS_TARGET_PACKAGE) | cut -d ' ' -f 5`"${CL_RST}
+	@echo -e "Flashable zip: "${BIWhite} $(AQUARIOS_TARGET_PACKAGE)${CL_RST}
+	@echo -e "Package size:"${BIWhite}" `ls -lah $(AQUARIOS_TARGET_PACKAGE) | cut -d ' ' -f 5`"${CL_RST}
 
 bacon: aquarios

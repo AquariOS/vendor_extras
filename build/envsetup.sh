@@ -12,14 +12,7 @@ EOF
 
 # Make using all available CPUs
 function mka() {
-    case `uname -s` in
-        Darwin)
-            make -j `sysctl hw.ncpu|cut -d" " -f2` "$@"
-            ;;
-        *)
-            mk_timer schedtool -B -n 1 -e ionice -n 1 make -j `cat /proc/cpuinfo | grep "^processor" | wc -l` "$@"
-            ;;
-    esac
+    m -j "$@"
 }
 
 function make()
@@ -63,7 +56,7 @@ function brunch()
 {
     breakfast $*
     if [ $? -eq 0 ]; then
-        time mka bacon
+        mka bacon
     else
         echo "No such item in brunch menu. Try 'breakfast'"
         return 1
@@ -107,7 +100,7 @@ function aospremote() {
         PFX="platform/"
     fi
     git remote add aosp https://android.googlesource.com/$PFX$PROJECT
-    echo "Remote 'aosp' created"
+    color_success "Remote 'aosp' created"
 }
 export -f aospremote
 
@@ -127,7 +120,7 @@ function cafremote()
         PFX="platform/"
     fi
     git remote add caf https://source.codeaurora.org/quic/la/$PFX$PROJECT
-    echo "Remote 'caf' created"
+    color_success "Remote 'caf' created"
 }
 
 function mk_timer()
@@ -140,11 +133,14 @@ function mk_timer()
     local hours=$(($tdiff / 3600 ))
     local mins=$((($tdiff % 3600) / 60))
     local secs=$(($tdiff % 60))
+    local ncolors=$(tput colors 2>/dev/null)
     echo
     if [ $ret -eq 0 ] ; then
-        echo -n "${BIGreen}#### build completed successfully ${CL_RST}"
+        echo -n "${color_success}#### build completed successfully"
+        echo -e $'\E'"[00m" ""
     else
-        echo -n "${BIRed}#### failed to build some targets ${CL_RST}"
+        echo -n "${color_failed}#### failed to build some targets"
+        echo -e $'\E'"[00m" ""
     fi
     if [ $hours -gt 0 ] ; then
         printf "(%02g:%02g:%02g (hh:mm:ss))" $hours $mins $secs
@@ -153,7 +149,7 @@ function mk_timer()
     elif [ $secs -gt 0 ] ; then
         printf "(%s seconds)" $secs
     fi
-    echo "${CL_BWT}####${CL_RST}"
+    echo " ####"
     echo
     return $ret
 }
