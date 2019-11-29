@@ -44,7 +44,7 @@ function breakfast()
             lunch $target
         else
             # This is probably just the Aqua model name
-            lunch aqua_$target-userdebug
+            lunch aqua_$target-user
         fi
     fi
     return $?
