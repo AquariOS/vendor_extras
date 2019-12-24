@@ -347,7 +347,7 @@ if __name__ == "__main__":
                 print_pass('Device repository exists on remote, preparing synchronization..')
 
                 # product can be get from device_repo by splitting
-                product = device_repo.split('_')[2]
+                product = device_repo.split('_')[1]
                 # Target path
                 repo_path = 'device/%s/%s' % (product, device)
 
