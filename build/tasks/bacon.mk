@@ -41,9 +41,9 @@ bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo -e ${5fffd7}"	                     oooooooooooooooooooooooo                  "${CL_RST}
 	@echo -e ${5fffd7}"	                   ooooooooooooooooooooooooooo                 "${CL_RST}
 	@echo -e ${5fffd7}"	                      ooooooooooooooooooooooooo                "${CL_RST}
-	@echo -e ${5fffd7}"	                    ooooooooooooooooooooooooooooo              "${CL_RST}
+	@echo -e ${5fffd7}"	                     oooooooooooooooooooooooooooo              "${CL_RST}
 	@echo -e ${00d7d7}"	                   oooooooooooooooooooooooooooooooo            "${CL_RST}
-	@echo -e ${00d7d7}"	                 oooooooooooooooooo ooooooooooooooooo          "${CL_RST}
+	@echo -e ${00d7d7}"	                  ooooooooooooooooo ooooooooooooooooo          "${CL_RST}
 	@echo -e ${00d7d7}"	                 ooooooooooooooooooo  ooo  oooooooooooo        "${CL_RST}
 	@echo -e ${00d7d7}"	                 oooooooooooooooooooooo          ooooo         "${CL_RST}
 	@echo -e ${00d7d7}"	                 ooooooooooooooooooooooooo                     "${CL_RST}
@@ -66,10 +66,10 @@ bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo -e ${5f87af}"	                oooooooooooooo                                 "${CL_RST}
 	@echo -e ${0087af}"	                oooooooooooooo         ooooooooo               "${CL_RST}
 	@echo -e ${0087af}"	                oooooooooooooo       ooooooooooooo             "${CL_RST}
-	@echo -e ${0087af}"	                ooooooooooooooo     ooooo  ooooooo             "${CL_RST}
+	@echo -e ${0087af}"	                oooooooooooooo      ooooo   ooooooo           "${CL_RST}
 	@echo -e ${0087af}"	                 oooooooooooooo     ooo      oooooo            "${CL_RST}
 	@echo -e ${0087af}"	                  oooooooooooooo    oo       oooooo            "${CL_RST}
-	@echo -e ${0087af}"	                    ooooooooooooooo  o     ooooooo             "${CL_RST}
+	@echo -e ${0087af}"	                    oooooooooooooo   o      oooooo             "${CL_RST}
 	@echo -e ${0087af}"	                     oooooooooooooooooooooooooooo              "${CL_RST}
 	@echo -e ${005f87}"	                        oooooooooooooooooooooooo               "${CL_RST}
 	@echo -e ${005f87}"	                           oooooooooooooooooooo                "${CL_RST}
