@@ -127,9 +127,9 @@ def exists_in_tree(lm, repository):
             return child
     return None
 
-def exists_in_tree_device(lm, repository):
+def exists_in_tree_device(lm, target_path):
     for child in lm.getchildren():
-        if child.attrib['name'].endswith(repository):
+        if child.attrib['path'] == target_path:
             return child
     return None
 
@@ -199,11 +199,15 @@ def add_to_manifest(repositories):
         branch = repo['branch']
         target = repo['target_path']
 
-        existing_project = exists_in_tree_device(lm, name)
+        existing_project = exists_in_tree_device(lm, target)
         if existing_project != None:
             if existing_project.attrib['revision'] != branch:
                 print('-- Updating branch for %s to %s' % (name, branch))
                 existing_project.set('revision', branch)
+            # If the repository name also has changed, update that too
+            if existing_project.attrib['name'] != name:
+                print('-- Updating repo name from %s to %s' % (existing_project.attrib['name'], name))
+                existing_project.set('name', name)
             continue
 
         cprint.success('-- Adding dependency: %s' % (name))
