@@ -39,7 +39,7 @@ from xml.etree import ElementTree
 DEFAULT_REMOTE = 'github'
 DEFAULT_ORG = 'Aqua-devices'
 DEFAULT_BRANCH = 'x'
-GERRIT_REMOTE = 'gerrit'
+GITLAB_REMOTE = 'gitlab'
 # Dependency file name
 DEPENDENCY_FILE = 'aqua.dependencies'
 # Where the local manifest path is located
@@ -286,7 +286,7 @@ def process_repo(repo):
     # If it doesn't match the regex, use gerrit for syncing
     else:
         name = repo
-        remote = GERRIT_REMOTE
+        remote = GITLAB_REMOTE
 
     return (name, remote)
 
